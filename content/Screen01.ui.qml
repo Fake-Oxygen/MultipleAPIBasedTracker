@@ -41,27 +41,34 @@ Rectangle {
             layer.format: ShaderEffectSource.Alpha
 
             TabButton {
-                id: btn_account
-                width: 75
-                height: 75
-                text: qsTr("Account")
-                anchors.bottom: parent.bottom
-                icon.height: 32
-                icon.width: 32
-                display: AbstractButton.TextUnderIcon
-                anchors.bottomMargin: 0
-                icon.source: "images/user-profile-icon.png"
-                onClicked: stackLayout.currentIndex = 0
-                checked: true
-            }
-
-            TabButton {
-                id: tabButton1
-                text: qsTr("Tab Button")
+                id: books
+                text: qsTr("Books")
                 width: 75
                 height: 75
                 onClicked: stackLayout.currentIndex = 1
             }
+
+            TabButton {
+                id: languages
+                text: qsTr("Languages")
+                width: 75
+                height: 75
+                onClicked: stackLayout.currentIndex = 1
+            }
+        }
+        TabButton {
+            id: btn_account
+            width: 75
+            height: 75
+            text: qsTr("Account")
+            anchors.bottom: parent.bottom
+            icon.height: 32
+            icon.width: 32
+            display: AbstractButton.TextUnderIcon
+            anchors.bottomMargin: 0
+            icon.source: "images/user-profile-icon.png"
+            onClicked: stackLayout.currentIndex = 0
+            checked: true
         }
     }
 
@@ -78,15 +85,8 @@ Rectangle {
         anchors.leftMargin: 75
         anchors.rightMargin: 0
 
-        AccountPage{
+        AccountPage {}
 
-        }
-
-        Rectangle {
-            id: rectangle3
-            width: 200
-            height: 200
-            color: "#8e1d1d"
-        }
+        BooksPageForm {}
     }
 }
