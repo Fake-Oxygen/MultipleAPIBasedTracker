@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include "HelperClasses/googlebooksapimanager.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -17,6 +19,9 @@ int main(int argc, char *argv[])
         },
         Qt::QueuedConnection);
     engine.load(url);
+
+    GoogleBooksAPIManager api;
+    api.SearchBooks(QString("konosuba"));
 
     return app.exec();
 }

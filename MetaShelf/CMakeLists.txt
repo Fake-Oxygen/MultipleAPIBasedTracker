@@ -19,6 +19,9 @@ qt_add_qml_module(appMetaShelf
         Main.qml
 RESOURCES assets/images/apple-icon.png assets/images/connected-plug-icon.png assets/images/disconnect-plug-icon.png assets/images/enter-icon.png assets/images/facebook-round-color-icon.png assets/images/github-icon.png assets/images/google-books-icon.png assets/images/google-color-icon.png assets/images/linkedin-app-icon.png assets/images/microsoft-icon.png assets/images/spotify-icon.png assets/images/user-profile-icon.png assets/images/x-social-media-black-icon.png
 QML_FILES pages/AccountPage.qml  pages/BooksDelegate.qml pages/BooksModel.qml pages/BooksPageForm.ui.qml pages/ConnectionsDelegate.qml pages/ConnectionsModel.qml pages/LoginPage.ui.qml pages/Base.ui.qml
+SOURCES HelperClasses/apimanager.h HelperClasses/apimanager.cpp
+SOURCES HelperClasses/envmanager.cpp HelperClasses/envmanager.h
+SOURCES HelperClasses/googlebooksapimanager.h HelperClasses/googlebooksapimanager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
