@@ -25,7 +25,7 @@ Item {
             y: 7.5
             width: 40
             height: 40
-            source: "images/disconnect-plug-icon.png"
+            source: "../assets/images/disconnect-plug-icon.png"
         }
     }
 }
