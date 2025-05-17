@@ -1,27 +1,43 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts
 
 Item {
-    width: 1280
-    height: 720
+    width: baseRoot.width
+    height: baseRoot.height
 
     ToolBar {
         id: toolBar
-        x: 0
-        y: 0
+        anchors.top: parent
+        anchors.left: parent
+        anchors.right: parent
         width: parent.width
+        height: 40
+        z: 1
+
+        RowLayout {
+            anchors.fill: parent
+            spacing: 10
+
+            TextField {
+                id: searchField
+                Layout.preferredWidth: 300
+                placeholderText: "Search..."
+            }
+
+            Button{
+                id: searchButton
+                text: "Search"
+                x: searchField.width
+            }
+
+            Item {
+                Layout.fillWidth: true
+            }
+        }
     }
 
-    TextField {
-        id: searchField
-        placeholderText: "Search..."
-    }
 
-    Button{
-        id: searchButton
-        text: "Search"
-        x: searchField.width
-    }
 
     Connections{
         target: searchButton
@@ -32,18 +48,18 @@ Item {
 
     GridView {
         id: gridView
-        x: 0
-        y: searchField.height
-        width: parent.width
-        height: parent.height - toolBar.height
         model: bookModel
+        width: mainWindow.width - cellWidth / 2
+        height: mainWindow.height
+        anchors.top: toolBar.bottom
+        anchors.bottom: parent
+        anchors.right: parent
+        anchors.left: parent
 
-        delegate: Rectangle {
-            width: 200; height: 100;
-            Text { text: title }
-        }
+
+        delegate: BooksDelegate {}
 
         cellWidth: 160
-        cellHeight: 256
+        cellHeight: 285
     }
 }

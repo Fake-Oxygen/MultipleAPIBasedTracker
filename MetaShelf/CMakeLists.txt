@@ -5,7 +5,7 @@ project(MetaShelf VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick Sql)
 
 
 qt_add_executable(appMetaShelf
@@ -17,7 +17,7 @@ qt_add_qml_module(appMetaShelf
     VERSION 1.0
     QML_FILES
         Main.qml
-RESOURCES assets/images/apple-icon.png assets/images/connected-plug-icon.png assets/images/disconnect-plug-icon.png assets/images/enter-icon.png assets/images/facebook-round-color-icon.png assets/images/github-icon.png assets/images/google-books-icon.png assets/images/google-color-icon.png assets/images/linkedin-app-icon.png assets/images/microsoft-icon.png assets/images/spotify-icon.png assets/images/user-profile-icon.png assets/images/x-social-media-black-icon.png
+RESOURCES assets/images/missing-cover.png assets/images/apple-icon.png assets/images/connected-plug-icon.png assets/images/disconnect-plug-icon.png assets/images/enter-icon.png assets/images/facebook-round-color-icon.png assets/images/github-icon.png assets/images/google-books-icon.png assets/images/google-color-icon.png assets/images/linkedin-app-icon.png assets/images/microsoft-icon.png assets/images/spotify-icon.png assets/images/user-profile-icon.png assets/images/x-social-media-black-icon.png
 QML_FILES pages/AccountPage.qml  pages/BooksDelegate.qml pages/BooksModel.qml pages/BooksPageForm.ui.qml pages/ConnectionsDelegate.qml pages/ConnectionsModel.qml pages/LoginPage.ui.qml pages/Base.ui.qml
 SOURCES HelperClasses/apimanager.h HelperClasses/apimanager.cpp
 SOURCES HelperClasses/envmanager.cpp HelperClasses/envmanager.h
@@ -25,6 +25,7 @@ SOURCES HelperClasses/googlebooksapimanager.h HelperClasses/googlebooksapimanage
 SOURCES DataClasses/book.h DataClasses/book.cpp
 SOURCES DataClasses/media.h DataClasses/media.cpp
 SOURCES DataClasses/bookmodel.h DataClasses/bookmodel.cpp
+RESOURCES assets/resources.qrc
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -39,7 +40,7 @@ set_target_properties(appMetaShelf PROPERTIES
 )
 
 target_link_libraries(appMetaShelf
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::Sql
 )
 
 include(GNUInstallDirs)

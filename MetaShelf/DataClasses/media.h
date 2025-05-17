@@ -16,11 +16,13 @@ public:
     QUrl thumbnailLink() const;
 
     QString title() const;
+    QString kind() const {return m_kind; };
     void setTitle(QString title) {m_title = title; };
 
 protected:
     QString m_title;
     QUrl m_thumbnailLink;
+    QString m_kind;
 
 signals:
 };

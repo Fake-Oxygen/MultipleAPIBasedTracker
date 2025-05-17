@@ -17,6 +17,8 @@ public:
 
     enum BookRoles {
         TitleRole = Qt::UserRole + 1,
+        ThumbnailRole,
+        AuthorsRole,
     };
 
     explicit BookModel(QObject *parent = nullptr);
@@ -25,21 +27,9 @@ public:
         return m_books.size();
     }
 
-    QVariant data(const QModelIndex& index, int role) const override {
-        if(!index.isValid() || index.row() >= m_books.size()){
-            return {};
-        }
+    QVariant data(const QModelIndex& index, int role) const override;
 
-        const auto& book = m_books[index.row()];
-        if (role == TitleRole) return book->title();
-        return {};
-    }
-
-    QHash<int, QByteArray> roleNames() const override {
-        return {
-                { TitleRole, "title"}
-        };
-    }
+    QHash<int, QByteArray> roleNames() const override;
 
     void setBooks(const QVector<QSharedPointer<Book>> &books){
         beginResetModel();
@@ -50,6 +40,10 @@ public:
     void addBook(const QSharedPointer<Book> &book);
 
     void clear();
+
+
+
+    QVector<QSharedPointer<Book> > books() const;
 
 private:
     QVector<QSharedPointer<Book>> m_books;

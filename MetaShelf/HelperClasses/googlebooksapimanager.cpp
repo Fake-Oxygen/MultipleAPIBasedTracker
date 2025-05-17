@@ -7,7 +7,7 @@ GoogleBooksAPIManager::GoogleBooksAPIManager(QObject *parent)
 }
 
 void GoogleBooksAPIManager::searchBooks(QString searchTerm){
-    APICallURL = QString("https://www.googleapis.com/books/v1/volumes?q=%1&key=%2").arg(searchTerm, envManager->googleBooksAPIkey());
+    APICallURL = QString("https://www.googleapis.com/books/v1/volumes?q=intitle:%1&maxResults=%2&key=%3").arg(searchTerm, "40", envManager->googleBooksAPIkey());
     Call(APICallURL);
 
     //Handle json
@@ -25,7 +25,7 @@ void GoogleBooksAPIManager::onJsonReady(const QJsonDocument &json){
         }
     }
 
-    // for (const QSharedPointer<Book> &book : m_bookModel.m_books){
-    //     qDebug() << book->title();
-    // }
+    for (const QSharedPointer<Book> &book : m_bookModel.books()){
+        qDebug() << book->kind();
+    }
 }
