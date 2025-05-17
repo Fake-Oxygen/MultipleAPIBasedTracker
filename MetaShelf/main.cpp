@@ -1,7 +1,10 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QSharedPointer>
 
 #include "HelperClasses/googlebooksapimanager.h"
+#include "DataClasses/bookmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,7 +24,9 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     GoogleBooksAPIManager api;
-    api.SearchBooks(QString("konosuba"));
+
+    engine.rootContext()->setContextProperty("googleBooksAPI", &api);
+    engine.rootContext()->setContextProperty("bookModel", api.bookModel());
 
     return app.exec();
 }

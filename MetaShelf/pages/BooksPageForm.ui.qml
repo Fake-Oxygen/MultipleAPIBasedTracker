@@ -12,15 +12,36 @@ Item {
         width: parent.width
     }
 
+    TextField {
+        id: searchField
+        placeholderText: "Search..."
+    }
+
+    Button{
+        id: searchButton
+        text: "Search"
+        x: searchField.width
+    }
+
+    Connections{
+        target: searchButton
+        function onClicked() {
+            googleBooksAPI.searchBooks(searchField.text);
+        }
+    }
+
     GridView {
         id: gridView
         x: 0
-        y: toolBar.height
+        y: searchField.height
         width: parent.width
         height: parent.height - toolBar.height
-        model: BooksModel {}
+        model: bookModel
 
-        delegate: BooksDelegate {}
+        delegate: Rectangle {
+            width: 200; height: 100;
+            Text { text: title }
+        }
 
         cellWidth: 160
         cellHeight: 256

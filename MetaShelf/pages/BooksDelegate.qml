@@ -5,6 +5,10 @@ Item {
     width: 160
     height: 256
 
+    Text {
+        text: title
+    }
+
     Image {
         id: cover
         source: bookCover
