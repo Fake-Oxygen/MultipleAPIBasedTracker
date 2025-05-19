@@ -7,6 +7,7 @@
 #include <QDirIterator>
 
 #include "HelperClasses/googlebooksapimanager.h"
+#include "HelperClasses/databasemanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,6 +27,7 @@ int main(int argc, char *argv[])
     engine.load(url);
 
     GoogleBooksAPIManager api;
+    DatabaseManager db;
 
     engine.rootContext()->setContextProperty("googleBooksAPI", &api);
     engine.rootContext()->setContextProperty("bookModel", api.bookModel());

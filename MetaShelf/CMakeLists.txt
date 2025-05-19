@@ -26,6 +26,7 @@ SOURCES DataClasses/book.h DataClasses/book.cpp
 SOURCES DataClasses/media.h DataClasses/media.cpp
 SOURCES DataClasses/bookmodel.h DataClasses/bookmodel.cpp
 RESOURCES assets/resources.qrc
+SOURCES HelperClasses/databasemanager.h HelperClasses/databasemanager.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
